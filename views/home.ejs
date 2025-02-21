@@ -8,13 +8,34 @@
   <body>
     <h1>Home</h1>
     <p>Welcome to my homepage</p>
-    <%if(user) { %>
+
+    <% if (user) { %>
     <p>User is <%= user.username %></p>
+    <%if(user?.isadmin) { %>
+    <p>User is admin</p>
+    <% } %>
+
     <a href="/logout">Logout</a>
-    <% } else {%>
+    <a href="/post">Create new post</a>
+    <% } else { %>
     <p>No user found</p>
     <a href="/register">Register</a>
     <a href="/login">Login</a>
-    <% }%>
+    <% } %> <% if (posts && posts.length > 0) { %> <% for (let post of posts) {
+    %>
+    <p>---------------------</p>
+    <h3>Title: <%= post.title %></h3>
+    <p>Text: <%= post.text %></p>
+    <%if(user?.isadmin) { %>
+    <form action="delete/<%= post.id%>" method="post">
+      <button type="submit">Delete</button>
+    </form>
+    <% } %> <% if (user) { %>
+    <p>Author: <%= post.username %></p>
+    <% } %>
+    <p>---------------------</p>
+    <% } %> <% } else { %>
+    <p>No posts available</p>
+    <% } %>
   </body>
 </html>

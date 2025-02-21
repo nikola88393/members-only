@@ -1,7 +1,8 @@
 const pool = require("./pool");
 
 const getAll = async () => {
-  const query = "SELECT * FROM posts JOIN users ON posts.author=users.id;";
+  const query =
+    "SELECT posts.id, title, text, username FROM posts JOIN users ON posts.author=users.id;";
 
   const { rows } = await pool.query(query);
 
@@ -11,7 +12,7 @@ const getAll = async () => {
 const createPost = async (user, title, text) => {
   const id = user.id;
 
-  const query = "INSERT INTO posts(title, text, authorId) VALUES ($1, $2, $3);";
+  const query = "INSERT INTO posts(title, text, author) VALUES ($1, $2, $3);";
 
   await pool.query(query, [title, text, id]);
 };
