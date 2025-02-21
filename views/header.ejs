@@ -1,0 +1,16 @@
+<header>
+  <h1>Members only</h1>
+  <div>
+    <% if(user) { %>
+    <span>User is <%= user.username %> | </span>
+    <% if(user?.isadmin) {%>
+    <span>admin |</span>
+    <% } %>
+    <a href="/logout">Logout</a>
+    <% } else {%>
+    <a href="/register">Register</a>
+    <span> | </span>
+    <a href="/login">Login</a>
+    <% } %>
+  </div>
+</header>

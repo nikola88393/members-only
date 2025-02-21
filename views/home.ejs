@@ -6,21 +6,12 @@
     <title>Home</title>
   </head>
   <body>
+    <%- include('header', {user}) %>
     <h1>Home</h1>
     <p>Welcome to my homepage</p>
 
     <% if (user) { %>
-    <p>User is <%= user.username %></p>
-    <%if(user?.isadmin) { %>
-    <p>User is admin</p>
-    <% } %>
-
-    <a href="/logout">Logout</a>
     <a href="/post">Create new post</a>
-    <% } else { %>
-    <p>No user found</p>
-    <a href="/register">Register</a>
-    <a href="/login">Login</a>
     <% } %> <% if (posts && posts.length > 0) { %> <% for (let post of posts) {
     %>
     <p>---------------------</p>
