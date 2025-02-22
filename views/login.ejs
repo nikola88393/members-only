@@ -3,10 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=, initial-scale=1.0" />
-    <title>Register</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+    <title>Login</title>
   </head>
   <body>
-    <h1>Login</h1>
+    <header>
+      <h1>Login</h1>
+    </header>
     <% if(err) { %>
     <p><%= err %></p>
     <% } %>
@@ -15,7 +18,7 @@
       <input type="text" id="username" name="username" />
       <label for="password">Password</label>
       <input type="password" name="password" id="password" />
-      <button type="submit">Submit</button>
+      <button class="btn" type="submit">Submit</button>
     </form>
   </body>
 </html>

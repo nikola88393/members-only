@@ -18,9 +18,6 @@ router.get("/register", (req, res) => {
 router.post("/register", controller.register);
 
 router.get("/logout", controller.logout);
-router.get("/login-failure", (req, res) => {
-  res.send("<h1>Error<h1/><p>Error during login</p>");
-});
 
 router.use((err, res, req, next) => {
   console.log(err);

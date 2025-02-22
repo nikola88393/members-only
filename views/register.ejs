@@ -3,18 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/main.css" />
     <title>Register</title>
   </head>
   <body>
-    <h1>Register</h1>
+    <header>
+      <h1>Register</h1>
+    </header>
     <form action="/register" method="post">
       <label for="username">Username</label>
       <input type="text" id="username" name="username" />
       <label for="password">Password</label>
       <input type="password" name="password" id="password" />
-      <label for="isadmin">Is admin</label>
-      <input type="checkbox" name="isadmin" id="isadmin" />
-      <button type="submit">Submit</button>
+      <div>
+        <label for="isadmin">Is admin</label>
+        <input type="checkbox" name="isadmin" id="isadmin" />
+      </div>
+      <button class="btn" type="submit">Submit</button>
     </form>
   </body>
 </html>

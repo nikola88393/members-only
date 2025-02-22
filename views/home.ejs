@@ -3,30 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/main.css" />
     <title>Home</title>
   </head>
   <body>
     <%- include('header', {user}) %>
     <h1>Home</h1>
-    <p>Welcome to my homepage</p>
-
     <% if (user) { %>
-    <a href="/post">Create new post</a>
-    <% } %> <% if (posts && posts.length > 0) { %> <% for (let post of posts) {
-    %>
-    <p>---------------------</p>
-    <h3>Title: <%= post.title %></h3>
-    <p>Text: <%= post.text %></p>
-    <%if(user?.isadmin) { %>
-    <form action="delete/<%= post.id%>" method="post">
-      <button type="submit">Delete</button>
-    </form>
-    <% } %> <% if (user) { %>
-    <p>Author: <%= post.username %></p>
+    <a class="btn" href="/post">Create new post</a>
     <% } %>
-    <p>---------------------</p>
-    <% } %> <% } else { %>
-    <p>No posts available</p>
-    <% } %>
+    <div class="posts-container">
+      <% if (posts && posts.length > 0) { %> <% for (let post of posts) { %>
+      <div class="post-container">
+        <h3>Title: <%= post.title %></h3>
+        <p>Text: <%= post.text %></p>
+        <% if (user) { %>
+        <p>Author: <%= post.username %></p>
+        <% } %> <%if(user?.isadmin) { %>
+        <form action="delete/<%= post.id%>" method="post">
+          <button class="btn danger" type="submit">Delete</button>
+        </form>
+        <% } %>
+      </div>
+      <% } %> <% } else { %>
+      <p>No posts available</p>
+      <% } %>
+    </div>
   </body>
 </html>
