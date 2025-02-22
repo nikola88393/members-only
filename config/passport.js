@@ -8,7 +8,10 @@ const verifyCb = async (username, password, done) => {
     const user = await getUserByUsername(username);
 
     if (!user) {
-      return done(null, false);
+      return done(null, false, {
+        message: "User with this username does not exist",
+      });
+      // return done(new Error("User with this username does not exist"));
     }
 
     const isValid = validatePassword(password, user.hash, user.salt);
@@ -16,7 +19,8 @@ const verifyCb = async (username, password, done) => {
     if (isValid) {
       return done(null, user);
     } else {
-      return done(null, false);
+      return done(null, false, { message: "Password is incorrect" });
+      // return done(new Error("Password is incorrect"));
     }
   } catch (err) {
     console.log(err);

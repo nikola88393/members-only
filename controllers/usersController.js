@@ -23,8 +23,10 @@ module.exports = {
   },
 
   login: passport.authenticate("local", {
-    failureRedirect: "/login-failure",
+    failureRedirect: "/login",
     successRedirect: "/",
+    // failWithError: true,
+    failureMessage: true,
   }),
 
   logout: (req, res, next) => {

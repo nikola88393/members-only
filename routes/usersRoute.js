@@ -3,7 +3,10 @@ const router = Router();
 const controller = require("../controllers/usersController");
 
 router.get("/login", (req, res) => {
-  res.render("login");
+  const error = req.session.messages?.[0]; // Store the message
+  req.session.messages = []; // Clear it BEFORE rendering
+  console.log(req.session.messages);
+  res.render("login", { err: error }); // Render with the cleared session
 });
 
 router.post("/login", controller.login);
