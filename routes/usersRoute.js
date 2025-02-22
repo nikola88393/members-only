@@ -12,7 +12,7 @@ router.get("/login", (req, res) => {
 router.post("/login", controller.login);
 
 router.get("/register", (req, res) => {
-  res.render("register");
+  res.render("register", { err: null });
 });
 
 router.post("/register", controller.register);

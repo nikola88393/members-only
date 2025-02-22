@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/main.css" />
     <title>Register</title>
   </head>
@@ -10,11 +10,16 @@
     <header>
       <h1>Register</h1>
     </header>
+    <% if(err){ %>
+    <p><%= err %></p>
+    <% } %>
     <form action="/register" method="post">
       <label for="username">Username</label>
       <input type="text" id="username" name="username" />
       <label for="password">Password</label>
       <input type="password" name="password" id="password" />
+      <label for="confirmPassword">Confirm password</label>
+      <input type="password" name="confirmPassword" id="confirmPassword" />
       <div>
         <label for="isadmin">Is admin</label>
         <input type="checkbox" name="isadmin" id="isadmin" />
