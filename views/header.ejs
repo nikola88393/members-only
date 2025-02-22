@@ -2,9 +2,13 @@
   <h1>Members only</h1>
   <div>
     <% if(user) { %>
-    <span>User is <%= user.username %> | </span>
-    <% if(user?.isadmin) {%>
-    <span>admin |</span>
+    <span>User is <%= user.username %></span>
+    <% if(user.ismember) {%>
+    <span>| member |</span>
+    <% } else {%>
+    <a class="btn" href="/membership">Membership</a>
+    <% } %> <% if(user.isadmin) {%>
+    <span>| admin |</span>
     <% } %>
     <a class="btn danger" href="/logout">Logout</a>
     <% } else {%>

@@ -3,7 +3,8 @@ CREATE TABLE IF NOT EXISTS users  (
     username VARCHAR(255) NOT NULL,
     hash VARCHAR(255) NOT NULL,
     salt VARCHAR(255) NOT NULL,
-    isadmin BOOLEAN NOT NULL
+    isadmin BOOLEAN NOT NULL,
+    ismember BOOLEAN NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS posts (

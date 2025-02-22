@@ -21,7 +21,13 @@ module.exports = {
 
     const { hash, salt } = generatePassword(password);
     try {
-      await queries.createUser(username, hash, salt, isadmin ? true : false);
+      await queries.createUser(
+        username,
+        hash,
+        salt,
+        isadmin ? true : false,
+        isadmin ? true : false
+      );
 
       res.redirect("/");
     } catch (err) {
@@ -43,5 +49,23 @@ module.exports = {
       }
     });
     res.redirect("/");
+  },
+
+  membership: async (req, res, next) => {
+    const id = req.user.id;
+    const { pass } = req.body;
+    console.log(pass);
+    if (pass !== process.env.MEMBER_SECRET) {
+      res.render("membership", { err: "Wrong secret!" });
+    }
+
+    try {
+      await queries.grantMemebrship(id);
+
+      res.redirect("/");
+    } catch (err) {
+      console.log(err);
+      next(err);
+    }
   },
 };

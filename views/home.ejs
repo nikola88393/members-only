@@ -9,7 +9,7 @@
   <body>
     <%- include('header', {user}) %>
     <h1>Home</h1>
-    <% if (user) { %>
+    <% if (user?.ismember) { %>
     <a class="btn" href="/post">Create new post</a>
     <% } %>
     <div class="posts-container">
@@ -17,7 +17,7 @@
       <div class="post-container">
         <h3>Title: <%= post.title %></h3>
         <p>Text: <%= post.text %></p>
-        <% if (user) { %>
+        <% if (user?.ismember) { %>
         <p>Author: <%= post.username %></p>
         <% } %> <%if(user?.isadmin) { %>
         <form action="delete/<%= post.id%>" method="post">

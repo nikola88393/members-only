@@ -39,11 +39,17 @@ const getUserById = async (id) => {
   return rows[0];
 };
 
-const createUser = async (username, hash, salt, isadmin) => {
+const createUser = async (username, hash, salt, ismember, isadmin) => {
   const query =
-    "INSERT INTO users(username, hash, salt, isadmin) VALUES ($1,$2,$3,$4);";
+    "INSERT INTO users(username, hash, salt,ismember, isadmin) VALUES ($1,$2,$3,$4,$5);";
 
-  await pool.query(query, [username, hash, salt, isadmin]);
+  await pool.query(query, [username, hash, salt, ismember, isadmin]);
+};
+
+const grantMemebrship = async (id) => {
+  const query = "UPDATE users SET ismember=true WHERE id=$1";
+
+  await pool.query(query, [id]);
 };
 
 module.exports = {
@@ -53,4 +59,5 @@ module.exports = {
   getUserByUsername,
   getUserById,
   createUser,
+  grantMemebrship,
 };

@@ -17,6 +17,12 @@ router.get("/register", (req, res) => {
 
 router.post("/register", controller.register);
 
+router.get("/membership", (req, res) => {
+  res.render("membership", { err: null });
+});
+
+router.post("/membership", controller.membership);
+
 router.get("/logout", controller.logout);
 
 router.use((err, res, req, next) => {
